@@ -8,11 +8,30 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
-			//Write your code here
+			function secondHighest(arr) {
+			if (arr.length < 2) return -Infinity;
 			
+			// Convert all elements to numbers
+			arr = arr.map(Number);
+			
+			let first = -Infinity;
+			let second = -Infinity;
+
+			for (let num of arr) {
+				if (num > first) {
+					second = first;
+					first = num;
+				} else if (num > second && num < first) {
+					second = num;
+				}
+			}
+
+			// If second highest is still -Infinity, means no valid second highest
+			return second === -Infinity ? -Infinity : second;
 		}
 
+
+		
 		function Main() {
 			var n = prompt("Enter the number of elements");
 			var arr = [];
